@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 40, 0, 40;
+    --background-end-rgb: 40, 0, 40;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+
+@layer components {
+  .button{
+    @apply inline-block text-xs font-bold text-center uppercase border rounded;
+  }
+  .button.light {
+    @apply text-fuchsia-100 bg-fuchsia-500 border-fuchsia-500;
+  }
+  .button.light:hover {
+    @apply bg-fuchsia-400 border-fuchsia-400;
+  }
+  .button.hollow {
+    @apply bg-transparent text-fuchsia-500 border-fuchsia-500;
+  }
+  .button.hollow:hover {
+    @apply bg-transparent text-fuchsia-400 border-fuchsia-400;
+  }
+}
