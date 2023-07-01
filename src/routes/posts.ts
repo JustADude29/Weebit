@@ -5,6 +5,7 @@ import auth from "../middleware/auth";
 import { Post } from "../entity/Post";
 import Sub from "../entity/Sub";
 import Comment from "../entity/Comment";
+import user from "../middleware/user";
 
 const createPost = async (req: Request, res: Response) => {
     const { title, body, sub } = req.body
@@ -75,9 +76,25 @@ const commentOnPost = async (req: Request, res: Response) => {
     }
 }
 
+const getPostComments =async (req:Request, res: Response) => {
+    const { identifier, slug } = req.params
+    try {
+        const post = await Post.findOneOrFail({ where: {identifier: identifier, slug: slug} })
+
+        const comments = post.comments
+        comments.reverse()
+
+        return res.json(comments)
+    } catch (err) {
+        console.log(err)
+        return res.status(500).json({ error: "sth wrong" })
+    }
+}
+
 const router = Router()
 router.post('/', auth, createPost)
 router.get('/', getPosts)
 router.get('/:identifier/:slug', getPost)
 router.post('/:identifier/:slug/comment', auth, commentOnPost)
+router.get('/:identifier/:slug/comments', getPostComments)
 export default router

@@ -24,11 +24,8 @@ export default class Sub extends Entity {
     @Column({ type: 'text', nullable: true })
     description: string
 
-    @Column({ nullable: true })
-    imageUrn: string
-
-    @Column({ type: 'text', nullable: true })
-    bannerUrn: string
+    @Column()
+    username: string
 
     @ManyToOne(() => User)
     @JoinColumn({ name: 'username', referencedColumnName: 'username' })

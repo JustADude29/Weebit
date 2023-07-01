@@ -7,7 +7,7 @@ const AppDataSource = new DataSource({
     port: 5432,
     username: "dude",
     password: "482903",
-    database: "dude",
+    database: "weebit",
     synchronize: false,
     logging: true,
     entities: ["src/entity/**/*.ts"],

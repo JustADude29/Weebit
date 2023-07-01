@@ -1,4 +1,4 @@
-import { BeforeInsert, Column, Index, JoinColumn, ManyToOne, OneToMany, Entity as TOEntity } from "typeorm";
+import { BeforeInsert, Column, EqualOperator, FindOperator, FindOptionsWhere, Index, JoinColumn, ManyToOne, OneToMany, Entity as TOEntity } from "typeorm";
 
 import Entity from "./Entity";
 import User from "./User";
@@ -26,14 +26,10 @@ export default class Comment extends Entity {
 
     @ManyToOne(() => User)
     @JoinColumn({ name: 'username', referencedColumnName: 'username' })
-    user: User
+    user: User | boolean | FindOperator<any> | FindOptionsWhere<User> | FindOptionsWhere<User>[] | EqualOperator<User>
 
     @ManyToOne(() => Post, (post) => post.comments, { nullable: false })
-    post: Post
-
-    @Exclude()
-    @OneToMany(() => Vote, vote => vote.comment)
-    votes: Vote[]
+    post: Post | boolean | FindOperator<any> | FindOptionsWhere<Post> | FindOptionsWhere<Post>[] | EqualOperator<Post>
 
     @BeforeInsert()
     makeIdAndSlug() {

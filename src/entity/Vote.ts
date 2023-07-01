@@ -17,7 +17,7 @@ export default class Vote extends Entity {
     @Column()
     value: number
 
-    @ManyToOne(() => User, (user)=>user.votes)
+    @ManyToOne(() => User)
     @JoinColumn({name: 'username', referencedColumnName: 'username'})
     user: User
 

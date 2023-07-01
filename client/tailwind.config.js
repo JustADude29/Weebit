@@ -16,7 +16,10 @@ module.exports = {
   },
   darkMode: 'media',
   variants: {
-    extend: {},
+    extend: {
+      backgroundColor: ['disabled'],
+      borderColor: ['disabled']
+    },
   },
   plugins: [
     function({ addComponents }){

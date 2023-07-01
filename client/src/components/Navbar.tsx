@@ -1,8 +1,24 @@
 import Link from "next/link"
 
 import Logo from '../../public/images/home.svg'
+import { useAuthDispatch, useAuthState } from "@/context/auth"
+import { Fragment } from "react"
+import axios from "axios"
 
 const NavBar: React.FC = () => {
+    const { authenticated, loading } = useAuthState()
+    const dispatch = useAuthDispatch()
+
+    const logout = () => {
+        axios.get('/auth/logout')
+            .then(() => {
+                if(dispatch)
+                    dispatch({type: 'LOGOUT'})
+                window.location.reload() 
+            })
+            .catch(err => console.log(err))
+    }
+    
     return <div className="fixed inset-x-0 top-0 z-10 flex items-center justify-center h-12 px-5 bg-fuchsia-950">
             {/* Title */}
             <div className="flex items-center">
@@ -28,16 +44,24 @@ const NavBar: React.FC = () => {
             </div>
             {/* Login */}
             <div className="flex">
-                <Link legacyBehavior href="/login">
-                    <a className="w-32 py-2 mr-4 hollow button">
-                        Login
-                    </a>
-                </Link>
-                <Link legacyBehavior href="/register">
-                    <a className="w-32 py-2 light button">
-                        Sign Up
-                    </a>
-                </Link>
+                { !loading && (authenticated ? (
+                    <button className="w-32 py-2 mr-4 hollow button" onClick={logout}>
+                        LogOut
+                    </button>
+                ): ( 
+                    <Fragment>
+                    <Link legacyBehavior href="/login">
+                        <a className="w-32 py-2 mr-4 hollow button">
+                            Login
+                        </a>
+                    </Link>
+                    <Link legacyBehavior href="/register">
+                        <a className="w-32 py-2 light button">
+                            Sign Up
+                        </a>
+                    </Link> 
+                    </Fragment>                   
+                ))}
             </div>
         </div>
 }

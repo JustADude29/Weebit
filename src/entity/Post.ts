@@ -45,14 +45,15 @@ export class Post extends Entity {
     @JoinColumn({ name: 'subName', referencedColumnName: 'name' })
     sub: Sub
 
-    @OneToMany(() => Comment, comment => comment.post)
+    @OneToMany(() => Comment, comment => comment.post, {eager: true})
     comments: Comment[]
-
-    @OneToMany(() => Vote, vote => vote.post)
-    votes: Vote[]
 
     @Expose() get url(): string {
         return `/r/${this.subName}/${this.identifier}/${this.slug}`;
+    }
+
+    @Expose() get commentCount(): number {
+        return this.comments?.length
     }
 
     @BeforeInsert()
