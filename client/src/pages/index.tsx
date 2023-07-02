@@ -1,14 +1,16 @@
 import Head from 'next/head'
 import useSWR from 'swr'
-
-import { Post, Sub } from '@/types'
-import PostCard from '@/components/PostCard'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { Post, Sub } from '@/types'
+import PostCard from '@/components/PostCard'
+import { useAuthState } from '@/context/auth'
+
 export default function Home() {
-    const { data: posts } = useSWR('/posts')
-    const { data: topSubs } = useSWR('/misc/top-subs')
+    const { authenticated } = useAuthState()
+    const { data: posts } = useSWR<Post[]>('/posts')
+    const { data: topSubs } = useSWR<Sub[]>('/misc/top-subs')
 
     return (
         <div className="pt-12">
@@ -19,7 +21,7 @@ export default function Home() {
                 <div className="container flex pt-4">
                     {/* posts */}
                     <div className="w-160">
-                        {posts?.map((post: Post) => (
+                        {posts?.map((post) => (
                             <PostCard post={post} key={post.identifier}></PostCard>
                         ))}
                     </div>
@@ -32,7 +34,7 @@ export default function Home() {
                                 </p>
                             </div>
                             <div>
-                                {topSubs?.map((sub: Sub) => (
+                                {topSubs?.map((sub) => (
                                     <div
                                         key={sub.name}
                                         className="flex items-center px-4 py-2 text-xs border-b border-fuchsia-900">
@@ -59,6 +61,13 @@ export default function Home() {
                                     </div>
                                 ))}
                             </div>
+                            {authenticated && 
+                                <div className="p-4">
+                                    <Link href={`/sub/create`} className='w-full px-2 py-1 light button'>
+                                        Create SubWebit
+                                    </Link>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>

@@ -81,4 +81,4 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }: { req
       res.writeHead(307, { Location: '/login' }).end();
       return { props: {} };
     }
-  }
+}

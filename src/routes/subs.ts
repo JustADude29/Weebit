@@ -17,7 +17,7 @@ const createSub = async (req: Request, res: Response) => {
     try {
         let errors: any = {}
         if (isEmpty(name)) errors.name = 'Name field must not be empty'
-        if (isEmpty(title)) errors.name = 'Title field must not be empty'
+        if (isEmpty(title)) errors.title = 'Title field must not be empty'
 
         const sub = await AppDataSource.getRepository(Sub)
             .createQueryBuilder('sub')
