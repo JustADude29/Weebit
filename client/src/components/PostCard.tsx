@@ -17,7 +17,7 @@ export default function PostCard({ post }: PostCardProps) {
             {/* post stuff */}
             <div className="w-full p-2">
                 <div className="flex items-center">
-                    <Link href={'/r/${post.subName}'}>
+                    <Link href={`/r/${post.subName}`}>
                         <img src="https://aniyuki.com/wp-content/uploads/2022/03/aniyuki-anime-girl-avatar-51.jpg" className="w-6 h-6 mr-1 rounded-full"></img>
                     </Link>
                     <Link legacyBehavior href={`/r/${post.subName}`}>
@@ -28,7 +28,7 @@ export default function PostCard({ post }: PostCardProps) {
                     <p className="text-xs text-fuchsia-600">
                         <span className="mx-1">-</span>
                         Posted by
-                        <Link legacyBehavior href={'/u/${post.username}'}>
+                        <Link legacyBehavior href={`/u/${post.username}`}>
                             <a className="mx-1 hover:underline">/u/{post.username}</a>
                         </Link>
                         <Link legacyBehavior href={post.url}>

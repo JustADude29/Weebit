@@ -122,9 +122,10 @@ export default function PostPage() {
                                                 </p>
                                                 <form onSubmit={submitComment}>
                                                     <textarea
-                                                        className="w-full p-3 border bg-fuchsia-800 border-fuchsia-700 focus:border-fuchsia-900" onChange={e => setNewComment(e.target.value)} value={newComment}>
-                                                        
-                                                    </textarea>
+                                                        className="w-full p-3 border rounded bg-fuchsia-800 border-fuchsia-900 focus:border-fuchsia-600 focus:outline-none" 
+                                                        onChange={e => setNewComment(e.target.value)} 
+                                                        value={newComment}
+                                                    />
                                                     <div className="flex justify-end">
                                                         <button className="px-3 py-1 light button" disabled={newComment.trim() === ''}>
                                                             Comment
@@ -172,7 +173,7 @@ export default function PostPage() {
                         </div>
                     </div>
                     {/* sidebar */}
-                    {post && <Sidebar sub={post.sub}></Sidebar>}
+                    { post?.sub && <Sidebar sub={post.sub}></Sidebar>}
                 </div>
             </div>
         </>

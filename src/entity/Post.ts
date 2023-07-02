@@ -6,7 +6,6 @@ import User from "./User";
 import { makeId, slugger } from "../../utils/helper";
 import Sub from "./Sub";
 import Comment from "./Comment";
-import Vote from "./Vote";
 
 @TOEntity("posts")
 export class Post extends Entity {

@@ -1,6 +1,4 @@
-import axios from 'axios'
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
 import useSWR from 'swr'
 
 import { Post, Sub } from '@/types'
@@ -17,7 +15,6 @@ export default function Home() {
             <div>
                 <Head>
                     <title>Weebit: for weebs ig? idk</title>
-                    <link rel="icon" href="/icons/icon_small.png" />
                 </Head>
                 <div className="container flex pt-4">
                     {/* posts */}
@@ -54,7 +51,11 @@ export default function Home() {
                                                 /r/{sub.name}
                                             </a>
                                         </Link>
-                                        <p className="ml-auto font-med text-fuchsia-500">{sub.postCount}</p>
+                                        {sub.postCount == 1 ? (
+                                            <p className="ml-auto font-med text-fuchsia-500">{sub.postCount} post</p>
+                                        ) : (
+                                            <p className="ml-auto font-med text-fuchsia-500">{sub.postCount} posts</p>
+                                        )}
                                     </div>
                                 ))}
                             </div>

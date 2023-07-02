@@ -11,6 +11,7 @@ import authRoutes from "./routes/auth"
 import postRoutes from "./routes/posts"
 import subRoutes from "./routes/subs"
 import miscRoutes from "./routes/misc"
+import userRoutes from "./routes/users"
 import trim from "./middleware/trim"
 
 const app = express()
@@ -31,6 +32,7 @@ app.use('/api/auth', authRoutes)
 app.use('/api/posts', postRoutes)
 app.use('/api/sub', subRoutes)
 app.use('/api/misc', miscRoutes)
+app.use('/api/user', userRoutes)
 
 app.listen(PORT,async () => {
     console.log("serber is running, hot nudes-> http://localhost:${PORT}")

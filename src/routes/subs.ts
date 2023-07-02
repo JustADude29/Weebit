@@ -15,23 +15,23 @@ const createSub = async (req: Request, res: Response) => {
     const user: User = res.locals.user
 
     try {
-        let errors:any = {}
-        if(isEmpty(name)) errors.name = 'Name field must not be empty'
-        if(isEmpty(title)) errors.name = 'Title field must not be empty'
+        let errors: any = {}
+        if (isEmpty(name)) errors.name = 'Name field must not be empty'
+        if (isEmpty(title)) errors.name = 'Title field must not be empty'
 
         const sub = await AppDataSource.getRepository(Sub)
             .createQueryBuilder('sub')
             .where('lower(sub.name) = :name', { name: name.toLowerCase() })
             .getOne()
 
-        if(sub) errors.name = 'Sub already exists'
+        if (sub) errors.name = 'Sub already exists'
 
-        if(Object.keys(errors).length > 0) throw errors
+        if (Object.keys(errors).length > 0) throw errors
 
     } catch (err) {
         return res.status(400).json(err)
     }
-    
+
 
     try {
         const sub = new Sub({ name, title, description, user })
@@ -40,17 +40,17 @@ const createSub = async (req: Request, res: Response) => {
         return res.json(sub)
     } catch (err) {
         console.log(err)
-        return res.status(500).json({ error:"sth wrong" })
+        return res.status(500).json({ error: "sth wrong" })
     }
 }
 
-const getSub =async (req:Request, res: Response) => {
+const getSub = async (req: Request, res: Response) => {
     const name = req.params.name
 
     try {
         const sub = await Sub.findOneOrFail({ where: { name: name } })
         const posts = await Post.find({
-            where: {subName: name},
+            where: { subName: name },
             order: { joinedAt: 'DESC' },
             relations: ['comments']
         })
@@ -63,7 +63,26 @@ const getSub =async (req:Request, res: Response) => {
     }
 }
 
+const searchSubs = async (req: Request, res: Response) => {
+    try {
+        const name = req.params.name
+        if (isEmpty(name))
+            return res.status(400).json({ error: "name musnt be empty" })
+        
+        const subs = await AppDataSource.getRepository(Sub)
+            .createQueryBuilder()
+            .where('LOWER(name) LIKE :name', { name: `${name.toLowerCase().trim()}%` })
+            .getMany()
+
+        return res.json(subs)
+    } catch (err) {
+        console.log(err)
+        return res.status(500).json({ error: "sth wrong" })
+    }
+}
+
 const router = Router();
 router.post('/', user, auth, createSub)
 router.get('/:name', user, getSub)
+router.get('/search/:name', searchSubs)
 export default router
