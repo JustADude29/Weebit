@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import useSWR from 'swr'
 import Image from "next/image";
 
+import icon_small from "../../../public/icons/icon_small.png"
 import PostCard from "@/components/PostCard";
 import Sidebar from "@/components/Sidebar";
 import { Post, Sub } from "@/types";
@@ -49,8 +50,8 @@ export default function SubPage() {
                             <div className="container relative flex">
                                 <div className="absolute" style={{ top: -15 }}>
                                     <Image
-                                        src="/icons/icon_small.png"
-                                        alt="/icons/icon_big.png"
+                                        src={icon_small}
+                                        alt="icon"
                                         className="rounded-full"
                                         width={70}
                                         height={70}

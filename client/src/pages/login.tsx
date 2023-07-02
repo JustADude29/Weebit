@@ -30,7 +30,7 @@ export default function Register() {
             if(dispatch)
                 dispatch({ type: 'LOGIN', payload: res.data })
 
-            router.back()
+            router.push('/')
         } catch (error: any) {
             setErrors(error.response.data)
         }
@@ -52,7 +52,7 @@ export default function Register() {
             <div className="flex flex-col justify-center pl-6">
                 <div>
                     <h1 className="mb-2 text-xl font-medium text-fuchsia-100">
-                        Login MF
+                        Login
                     </h1>
                     <form onSubmit={submitForm}>
                         <InputGroup

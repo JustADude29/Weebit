@@ -34,19 +34,23 @@
 ![Home page](screenshots/homepage.png)
 
 ### Create subWeebit Page:
-![Create subWeebit Page](screenshots/create%20subweebit.png)
+![Create subWeebit Page](screenshots/create_subweebit.png)
 
 ### Create Post page:
 ![Create Post page](screenshots/create_post_page.png)
 
 ### Post Page:
-![Post Page](screenshots/post_paeg_comments.png)
+![Post Page](screenshots/post_page_comments.png)
 
 ### SubWeebit Page:
-![SubWeebit Page](screenshots/subweenbit_page_empty.png)
+![SubWeebit Page](screenshots/subweebit_page.png)
 
 ### User Page:
 ![User Page](screenshots/userpage.png)
 
 ## Acknowledgements:
 * [Classed](https://www.youtube.com/@Classsed) for YouTube tutorial on how to make the website
+* [Adobe Stock Image](/client/public/images/background.jpg)
+
+
+***The [icon](/client/public/icons/icon_big.png) used is made by me***

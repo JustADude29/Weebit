@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import useSWRInfinite from "swr/infinite";
 
+import icon_small from "../../public/icons/icon_small.png"
 import { Post, Sub } from '@/types'
 import PostCard from '@/components/PostCard'
 import { useAuthState } from '@/context/auth'
@@ -94,8 +95,8 @@ export default function Home() {
                                         <div className="mr-2 overflow-hidden rounded-full">
                                             <Link href={`/r/${sub.name}`}>
                                                 <Image
-                                                    src="/icons/icon_small.png"
-                                                    alt="/icons/icon_big.png"
+                                                    src={icon_small}
+                                                    alt="icon"
                                                     width={6 * 16 / 4}
                                                     height={6 * 16 / 4}
                                                 />

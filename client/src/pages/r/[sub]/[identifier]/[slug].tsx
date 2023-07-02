@@ -8,7 +8,7 @@ import useSWR, { mutate } from 'swr'
 import { FormEvent, useState } from "react";
 import axios from "axios";
 
-
+import icon_small from "../../../../../public/icons/icon_small.png"
 import Sidebar from "@/components/Sidebar";
 import { Post, Comment } from "@/types";
 import { useAuthState } from "@/context/auth";
@@ -55,8 +55,8 @@ export default function PostPage() {
                             {post && (
                                 <div className="mr-2">
                                     <Image
-                                        src="/icons/icon_small.png"
-                                        alt="/icons/icon_big.png"
+                                        src={icon_small}
+                                        alt="icon"
                                         className="rounded-full"
                                         width={70}
                                         height={70}

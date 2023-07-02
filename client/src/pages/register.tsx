@@ -55,7 +55,7 @@ export default function Register() {
             <div className="flex flex-col justify-center pl-6">
                 <div>
                     <h1 className="mb-2 text-xl font-medium text-fuchsia-100">
-                        Sign Up MF
+                        Sign Up
                     </h1>
                     <p className="w-64 mb-10 text-xs text-fuchsia-100">
                         By continuing you agree to sell your life and never touch grass ever again
