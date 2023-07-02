@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function Sidebar({ sub }: { sub: Sub }) {
     const { authenticated } = useAuthState()
     return(
-        <div className="ml-6 w-80">
+        <div className="hidden ml-6 w-80 md:block">
             <div className="rounded bg-fuchsia-950">
                 <div className="p-3 rounded-t bg-fuchsia-900">
                     <p className="font-semibold text-fuchsia-300">About Community</p>

@@ -27,7 +27,7 @@ app.use(cors({
     optionsSuccessStatus: 200,
 }))
 
-app.get('/', (_, res) => res.send('f**k off'))
+app.get('/', (_, res) => res.send('server is up and running'))
 app.use('/api/auth', authRoutes)
 app.use('/api/posts', postRoutes)
 app.use('/api/sub', subRoutes)
@@ -35,7 +35,7 @@ app.use('/api/misc', miscRoutes)
 app.use('/api/user', userRoutes)
 
 app.listen(PORT,async () => {
-    console.log("serber is running, hot nudes-> http://localhost:${PORT}")
+    console.log("serber is running -> http://localhost:${PORT}")
 
     try {
         await AppDataSource.initialize()

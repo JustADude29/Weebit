@@ -100,14 +100,14 @@ export default function PostPage() {
                                                     </div>
                                                 </a>
                                             </Link>
-                                            <div className="px-1 py-1 mr-1 text-sm rounded cursor-pointer text-fuchsia-600 hover:bg-fuchsia-900">
+                                            {/* <div className="px-1 py-1 mr-1 text-sm rounded cursor-pointer text-fuchsia-600 hover:bg-fuchsia-900">
                                                 <i className="mr-1 fas fa-share fa-xs"></i>
                                                 <span className="font-bold">Share</span>
                                             </div>
                                             <div className="px-1 py-1 mr-1 text-sm rounded cursor-pointer text-fuchsia-600 hover:bg-fuchsia-900">
                                                 <i className="mr-1 fas fa-bookmark fa-xs"></i>
                                                 <span className="font-bold">Save</span>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                     {/* comment input */}

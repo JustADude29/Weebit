@@ -6,6 +6,8 @@ export default function Document() {
       <Head>
         <link rel="icon" href="/icons/icon_small.png" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossOrigin="anonymous" referrerPolicy="no-referrer" />
+        <title>Weebit</title>
+        <meta property='og:site_name' content='Weebit'/>
       </Head>
       <body>
         <Main />

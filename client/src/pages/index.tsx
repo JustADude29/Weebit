@@ -2,32 +2,85 @@ import Head from 'next/head'
 import useSWR from 'swr'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import useSWRInfinite from "swr/infinite";
 
 import { Post, Sub } from '@/types'
 import PostCard from '@/components/PostCard'
 import { useAuthState } from '@/context/auth'
 
 export default function Home() {
+    const [observedPost, setObservedPost] = useState('')
+
     const { authenticated } = useAuthState()
-    const { data: posts } = useSWR<Post[]>('/posts')
+    
+    const description = "Weebit is a place for weebs to discuss about anime"
+    const title = "Weebit: for weebs ig? idk"
+    
+    // const { data: posts } = useSWR<Post[]>('/posts')
     const { data: topSubs } = useSWR<Sub[]>('/misc/top-subs')
+
+    const {
+        data,
+        size: page,
+        setSize: setPage,
+        isValidating,
+        isLoading
+      } = useSWRInfinite<Post[]>(
+        (index) =>
+          `/posts?page=${index}`
+    )
+
+    const posts: Post[] = data ? ([] as Post[]).concat(...data) : []
+
+    useEffect(() => {
+        if(!posts || posts.length === 0) return
+        
+        const id = posts[posts.length - 1].identifier
+        
+        if(id !== observedPost){
+            setObservedPost(id)
+            if(document.getElementById(id) != null)
+                observerPost(document.getElementById(id))
+        }
+    }, [posts])
+
+    const observerPost = (element: HTMLElement | null) => {
+        if (!element) return;
+        const observer = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting === true) {
+            // console.log('bottom came')
+            setPage(page+1)
+            observer.unobserve(element)
+          }
+        }, { threshold: 1 })
+        observer.observe(element)
+    }
+
 
     return (
         <div className="pt-12">
             <div>
                 <Head>
-                    <title>Weebit: for weebs ig? idk</title>
+                    <title>{title}</title>
+                    <meta name='description' content={description}/>
+                    <meta property='og:title' content={title}/>
+                    <meta property='ig:title' content={description}/>
+                    <meta property='twitter:title' content={title}/>
+                    <meta property='twitter:description' content={description}/>
                 </Head>
                 <div className="container flex pt-4">
                     {/* posts */}
-                    <div className="w-160">
+                    {isLoading && <div className="text-lg text-center text-fuchsia-300">Loading...</div>}
+                    <div className="w-full sm:px-4 md:p-0 md:w-160">
                         {posts?.map((post) => (
                             <PostCard post={post} key={post.identifier}></PostCard>
                         ))}
                     </div>
+                    {isValidating && posts.length > 0 && <div className="text-lg text-center text-fuchsia-300">Loading more posts...</div>} 
                     {/* sidebar */}
-                    <div className="ml-auto w-80">
-                        <div className='rounded bg-fuchsia-950'>
+                    <div className="hidden ml-6 w-80 md:block">
+                        <div className='pb-2 rounded bg-fuchsia-950'>
                             <div className="p-4 border-b-2 border-fuchsia-900">
                                 <p className="text-lg font-semibold text-center bg-transparent text-fuchsia-300">
                                     Top Communities

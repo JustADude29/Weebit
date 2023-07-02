@@ -25,7 +25,7 @@ export default function SubPage() {
         postsMarkUp = <div className="text-lg text-center text-fuchsia-300">No Posts yet</div>
     } else {
         postsMarkUp = sub && (
-            <div className="w-160">
+            <div className="w-full sm:px-4 md:p-0 md:w-160">
                 {sub.posts.map((post: Post) => <PostCard post={post} key={post.identifier}></PostCard>)}
             </div>
         )
