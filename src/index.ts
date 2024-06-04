@@ -35,7 +35,7 @@ app.use('/api/misc', miscRoutes)
 app.use('/api/user', userRoutes)
 
 app.listen(PORT,async () => {
-    console.log("serber is running -> http://localhost:${PORT}")
+    console.log(`serber is running -> http://localhost:${PORT}`)
 
     try {
         await AppDataSource.initialize()
