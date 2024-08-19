@@ -21,9 +21,9 @@ export default function SubPage() {
 
     let postsMarkUp
     if (!sub) {
-        postsMarkUp = <p className="text-lg text-center text-fuchsia-300">Loading posts...</p>
+        postsMarkUp = <p className="text-lg text-center text-green-600">Loading posts...</p>
     } else if (sub.posts.length === 0) {
-        postsMarkUp = <div className="text-lg text-center text-fuchsia-300">No Posts yet</div>
+        postsMarkUp = <div className="text-lg text-center text-green-600">No Posts yet</div>
     } else {
         postsMarkUp = sub && (
             <div className="w-full sm:px-4 md:p-0 md:w-160">
@@ -40,13 +40,13 @@ export default function SubPage() {
             {sub && (
                 <div className="pt-12">
                     <Fragment>
-                        <div className="bg-fuchsia-900">
-                            <div className="h-20 bg-fuchsia-800" style={{
+                        <div className="bg-green-900">
+                            <div className="h-20 bg-green-700" style={{
                                 backgroundImage: `none`
                             }}>
                             </div>
                         </div>
-                        <div className="h-30 bg-fuchsia-900">
+                        <div className="h-30 bg-green-800">
                             <div className="container relative flex">
                                 <div className="absolute" style={{ top: -15 }}>
                                     <Image
@@ -59,11 +59,11 @@ export default function SubPage() {
                                 </div>
                                 <div className="pt-2 pl-24">
                                     <div className="flex items-center">
-                                        <h1 className="mb-1 text-3xl font-bold text-fuchsia-200">
+                                        <h1 className="mb-1 text-3xl font-bold text-green-200">
                                             {sub.title}
                                         </h1>
                                     </div>
-                                    <p className="mb-2 text-sm font-bold text-fuchsia-300">
+                                    <p className="mb-2 text-sm font-bold text-green-300">
                                         r/{sub.name}
                                     </p>
                                 </div>

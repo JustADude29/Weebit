@@ -51,12 +51,12 @@ export default function Register() {
 
             <div className="flex flex-col justify-center pl-6">
                 <div>
-                    <h1 className="mb-2 text-xl font-medium text-fuchsia-100">
+                    <h1 className="mb-2 text-xl font-medium  text-green-800">
                         Login
                     </h1>
                     <form onSubmit={submitForm}>
                         <InputGroup
-                            className="mb-2"
+                            className="mb-2 text-green-700 placeholder-green-600"
                             type="text"
                             value={username}
                             setValue={setUserName}
@@ -64,7 +64,7 @@ export default function Register() {
                             error={errors.username}
                         />
                         <InputGroup
-                            className="mb-4"
+                            className="mb-4 text-green-700 placeholder-green-600"
                             type="password"
                             value={password}
                             setValue={setPassword}
@@ -72,14 +72,14 @@ export default function Register() {
                             error={errors.password}
                         />
 
-                        <button className="w-full py-3 mb-4 font-bold transition border rounded duraiton-50 text-s text-fuchsia-200 bg-fuchsia-700 border-fuchsia-700 hover:bg-fuchsia-900">
+                        <button className="w-full py-3 mb-4 font-bold transition border rounded duraiton-50 text-s text-green-200 bg-green-700 border-green-700 hover:bg-green-900">
                             Login
                         </button>
                     </form>
-                    <small className="text-fuchsia-100">
+                    <small className="text-green-500">
                         Not a weeb yet?
                         <Link legacyBehavior href="/register">
-                            <a className="ml-1 uppercase text-fuchsia-500">Sign Up</a>
+                            <a className="ml-1 uppercase text-green-600">Sign Up</a>
                         </Link>
                     </small>
                 </div>

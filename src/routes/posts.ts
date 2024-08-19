@@ -2,7 +2,7 @@ import { Request, Response, response } from "express";
 import { Router } from "express";
 
 import auth from "../middleware/auth";
-import { Post } from "../entity/Post";
+import Post from "../entity/Post";
 import Sub from "../entity/Sub";
 import Comment from "../entity/Comment";
 import user from "../middleware/user";
@@ -33,9 +33,8 @@ const getPosts =async (req: Request, res: Response) => {
     const postsPerPage: number = (req.query.count || 10) as number
     try {
         const posts = await Post.find({
-            order: {
-                joinedAt: 'DESC',
-            },
+            order: {joinedAt: 'DESC'},
+            relations: ['comments', 'votes', 'sub'],
             skip: currentPage * postsPerPage,
             take: postsPerPage
         })
@@ -50,7 +49,14 @@ const getPosts =async (req: Request, res: Response) => {
 const getPost = async (req: Request, res: Response) => {
     const { identifier, slug } = req.params
     try {
-        const post = await Post.findOneOrFail({ where:{ identifier: identifier, slug: slug }, relations:['sub'] })
+        const post = await Post.findOneOrFail({ 
+          where:{ identifier: identifier, slug: slug }, 
+          relations:['comments', 'votes', 'sub'] 
+        })
+
+        if(res.locals.user) {
+          post.setUserVote(res.locals.user)
+        }
 
         return res.json(post)
     } catch (error) {
@@ -87,6 +93,10 @@ const getPostComments =async (req:Request, res: Response) => {
 
         const comments = post.comments
         comments.reverse()
+
+        if(res.locals.user) {
+          comments.forEach((c) => c.setUserVote(res.locals.user))
+        }
 
         return res.json(comments)
     } catch (err) {

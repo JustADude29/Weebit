@@ -1,7 +1,7 @@
 {
-   "name": "typeorm-sample",
-   "version": "0.0.1",
-   "description": "Awesome project developed with TypeORM.",
+   "name": "Weebit",
+   "version": "1.0.0",
+   "description": "Online Forum App",
    "type": "commonjs",
    "devDependencies": {
       "@types/bcrypt": "^5.0.0",

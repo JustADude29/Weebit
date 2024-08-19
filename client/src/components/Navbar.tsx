@@ -53,7 +53,7 @@ const NavBar: React.FC = () => {
         setName('')
     }
 
-    return <div className="fixed inset-x-0 top-0 z-10 flex items-center justify-between h-12 px-5 bg-fuchsia-950">
+    return <div className="fixed inset-x-0 top-0 z-10 flex items-center justify-between h-12 px-5 bg-green-100">
         {/* Title */}
         <div className="flex items-center">
             <Link legacyBehavior href="/">
@@ -61,7 +61,7 @@ const NavBar: React.FC = () => {
                     <Logo className="w-8 h-8 mr-2" />
                 </a>
             </Link>
-            <span className="hidden text-2xl font-semibold lg:block">
+            <span className="hidden text-2xl font-semibold lg:block text-green-800">
                 <Link href="/">
                     weebit
                 </Link>
@@ -69,18 +69,18 @@ const NavBar: React.FC = () => {
         </div>
         {/* searchbar */}
         <div className="max-w-full px-4 w-160">
-            <div className="relative flex items-center border rounded border-fuchsia-800 bg-fuchsia-800 hover:border-fuchsia-500">
-                <i className="pl-3 pr-2 text-fuchsia-500 fas fa-search"></i>
+            <div className="relative flex items-center border rounded border-green-200 bg-green-200 hover:border-green-500">
+                <i className="pl-3 pr-2 text-green-900 fas fa-search"></i>
                 <input
                     type="text"
-                    className="py-1 pr-3 bg-transparent outline-none caret-fuchsia-500 text-fuchsia-300 placeholder-fuchsia-600"
+                    className="py-1 pr-3 bg-transparent outline-none caret-green-500 text-green-900 placeholder-green-600"
                     placeholder="Search"
                     value={name}
                     onChange={e => setName(e.target.value)}
                 />
                 <div className="absolute left-0 right-0 bg-transparent" style={{ top: '100%' }}>
-                    {subs?.map(sub => (
-                        <div className="flex items-center px-4 py-3 rounded cursor-pointer bg-fuchsia-800 hover:bg-fuchsia-700" onClick={() => goToSub(sub.name)}>
+                    {name!=="" && subs?.map(sub => (
+                        <div className="flex items-center px-4 py-3 rounded cursor-pointer bg-green-300 hover:bg-green-400" onClick={() => goToSub(sub.name)}>
                             <Image
                                 src={'/icons/icon_big.png'}
                                 alt="NULL"
@@ -89,8 +89,8 @@ const NavBar: React.FC = () => {
                                 className="rounded-full"
                             />
                             <div className="ml-4 text-sm">
-                                <p className="font-medium text-fuchsia-400">{sub.name}</p>
-                                <p className="text-fuchsia-500">{sub.title}</p>
+                                <p className="font-medium text-green-800">{sub.name}</p>
+                                <p className="text-green-600">{sub.title}</p>
                             </div>
                         </div>
                     ))}

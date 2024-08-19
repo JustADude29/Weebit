@@ -7,7 +7,7 @@ import User from "../entity/User"
 import Sub from "../entity/Sub"
 import auth from "../middleware/auth"
 import user from "../middleware/user"
-import { Post } from "../entity/Post"
+import Post from "../entity/Post"
 
 const createSub = async (req: Request, res: Response) => {
     const { name, title, description } = req.body

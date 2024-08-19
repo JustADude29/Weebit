@@ -4,15 +4,15 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 40, 0, 40;
-    --background-end-rgb: 40, 0, 40;
+    --background-start-rgb: 240, 255, 240;
+    --background-end-rgb: 240, 255, 240;
   }
 }
 
@@ -32,9 +32,9 @@ body {
     @apply inline-block text-xs font-bold text-center uppercase border rounded;
   }
   .button.light {
-    @apply border text-fuchsia-100 bg-fuchsia-500 border-fuchsia-500 hover:bg-fuchsia-400 hover:border-fuchsia-400 disabled:bg-fuchsia-800 disabled:border-fuchsia-800 disabled:text-fuchsia-900;
+    @apply border text-white bg-green-600 border-green-600 hover:bg-green-400 hover:border-green-400 disabled:bg-green-500 disabled:border-green-500;
   }
   .button.hollow {
-    @apply bg-transparent text-fuchsia-500 border-fuchsia-500 hover:text-fuchsia-400 hover:border-fuchsia-400;
+    @apply text-green-600 bg-transparent border-green-600 hover:bg-green-400;
   }
 }

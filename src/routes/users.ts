@@ -2,11 +2,11 @@ import { Request, Response, Router } from "express";
 
 import user from "../middleware/user";
 import User from "../entity/User";
-import { Post } from "../entity/Post";
+import Post from "../entity/Post";
 import Comment from "../entity/Comment";
 
 
-const getUserPosts =async (req:Request, res: Response) => {
+const getUserPosts = async (req:Request, res: Response) => {
     try {
         const user = await User.findOneOrFail({ 
             where: { username: req.params.username },
@@ -15,13 +15,18 @@ const getUserPosts =async (req:Request, res: Response) => {
 
         const posts = await Post.find({
             where: { username: user.username },
-            relations: ['comments', 'sub']
+            relations: ['comments', 'votes', 'sub']
         })
 
         const comments = await Comment.find({
             where: { username: user.username },
             relations: ['post']
         })
+
+        if(res.locals.user) {
+          posts.forEach((p) => p.setUserVote(res.locals.user));
+          comments.forEach((c) => c.setUserVote(res.locals.user));
+        }
 
         let submissions: any[] = []
         posts.forEach(p => submissions.push({ type: 'Post', ...p.toJSON() }))

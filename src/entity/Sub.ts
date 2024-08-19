@@ -3,7 +3,7 @@ import { Entity as TOEntity, Column, Index, ManyToOne, JoinColumn, OneToMany } f
 import Entity from "./Entity";
 import User from "./User";
 import { makeId, slugger } from "../../utils/helper";
-import { Post } from "./Post";
+import Post from "./Post";
 
 @TOEntity("subs")
 export default class Sub extends Entity {

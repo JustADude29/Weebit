@@ -72,18 +72,18 @@ export default function Home() {
                 </Head>
                 <div className="container flex pt-4">
                     {/* posts */}
-                    {isLoading && <div className="text-lg text-center text-fuchsia-300">Loading...</div>}
+                    {isLoading && <div className="text-lg text-center text-green-500">Loading...</div>}
                     <div className="w-full sm:px-4 md:p-0 md:w-160">
                         {posts?.map((post) => (
                             <PostCard post={post} key={post.identifier}></PostCard>
                         ))}
                     </div>
-                    {isValidating && posts.length > 0 && <div className="text-lg text-center text-fuchsia-300">Loading more posts...</div>} 
+                    {isValidating && posts.length > 0 && <div className="text-lg text-center text-green-500">Loading more posts...</div>} 
                     {/* sidebar */}
                     <div className="hidden ml-6 w-80 md:block">
-                        <div className='pb-2 rounded bg-fuchsia-950'>
-                            <div className="p-4 border-b-2 border-fuchsia-900">
-                                <p className="text-lg font-semibold text-center bg-transparent text-fuchsia-300">
+                        <div className='pb-2 rounded bg-green-200'>
+                            <div className="p-4 border-b-2 border-green-600">
+                                <p className="text-lg font-semibold text-center bg-transparent text-green-600">
                                     Top Communities
                                 </p>
                             </div>
@@ -91,7 +91,7 @@ export default function Home() {
                                 {topSubs?.map((sub) => (
                                     <div
                                         key={sub.name}
-                                        className="flex items-center px-4 py-2 text-xs border-b border-fuchsia-900">
+                                        className="flex items-center px-4 py-2 text-xs border-b border-green-500">
                                         <div className="mr-2 overflow-hidden rounded-full">
                                             <Link href={`/r/${sub.name}`}>
                                                 <Image
@@ -103,14 +103,14 @@ export default function Home() {
                                             </Link>
                                         </div>
                                         <Link legacyBehavior href={`/r/${sub.name}`}>
-                                            <a className="font-bold text-fuchsia-300">
+                                            <a className="font-bold text-green-600">
                                                 /r/{sub.name}
                                             </a>
                                         </Link>
                                         {sub.postCount == 1 ? (
-                                            <p className="ml-auto font-med text-fuchsia-500">{sub.postCount} post</p>
+                                            <p className="ml-auto font-med text-green-500">{sub.postCount} post</p>
                                         ) : (
-                                            <p className="ml-auto font-med text-fuchsia-500">{sub.postCount} posts</p>
+                                            <p className="ml-auto font-med text-green-500">{sub.postCount} posts</p>
                                         )}
                                     </div>
                                 ))}

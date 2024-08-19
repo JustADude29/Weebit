@@ -10,7 +10,9 @@ export interface Post {
     sub?: Sub
 
     url: string
+    voteScore?: number
     commentCount?: number
+    userVote?: number
 }
 
 export interface User {
@@ -37,5 +39,8 @@ export interface Comment{
     identifier: string
     body: string
     username: string
-    post: Post
+    post?: Post
+
+    userVote: number
+    voteScore: number
 }

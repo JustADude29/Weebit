@@ -34,24 +34,24 @@ export default function submit(){
     if(error) router.push('/')
     return (
         <div className="pt-12">
-        <div className="container flex pt-5 text-fuchsia-300">
+        <div className="container flex pt-5 text-green-700">
             <Head>
                 <title>Submit to r/{subName}</title>
             </Head>
             <div className="w-160">
-                <div className="p-4 rounded bg-fuchsia-900">
+                <div className="p-4 rounded bg-green-200">
                     <h1 className="mb-3 text-xl">
                         Submit to r/{subName}
                     </h1>
                     <form onSubmit={submitPost}>
                         <div className="relative mb-2">
-                            <input type="text" className="w-full px-3 py-2 border rounded bg-fuchsia-800 border-fuchsia-900 focus:outline-none focus:border-fuchsia-600 placeholder-fuchsia-500" placeholder="Title"  maxLength={300} value={title} onChange={e => setTitle(e.target.value)}/>
-                            <div className="absolute mb-2 text-sm select-none text-fuchsia-600" style={{top:11, right: 5}}>
+                            <input type="text" className="w-full px-3 py-2 border rounded bg-green-300 border-green-300 focus:outline-none focus:border-green-400 placeholder-green-600" placeholder="Title"  maxLength={300} value={title} onChange={e => setTitle(e.target.value)}/>
+                            <div className="absolute mb-2 text-sm select-none text-green-600" style={{top:11, right: 5}}>
                                 { title.trim().length }/300
                             </div>
                         </div>
                         <textarea 
-                            className="w-full p-3 border rounded bg-fuchsia-800 border-fuchsia-900 focus:outline-none focus:border-fuchsia-600 placeholder-fuchsia-500" 
+                            className="w-full p-3 border rounded bg-green-300 border-green-300 focus:outline-none focus:border-green-400 placeholder-green-600" 
                             value={body}
                             onChange={e=>setBody(e.target.value)}
                             placeholder="Text (optional)" 

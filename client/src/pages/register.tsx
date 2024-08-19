@@ -54,10 +54,10 @@ export default function Register() {
 
             <div className="flex flex-col justify-center pl-6">
                 <div>
-                    <h1 className="mb-2 text-xl font-medium text-fuchsia-100">
+                    <h1 className="mb-2 text-xl font-bold text-green-800">
                         Sign Up
                     </h1>
-                    <p className="w-64 mb-10 text-xs text-fuchsia-100">
+                    <p className="w-64 mb-10 text-xs text-green-700">
                         By continuing you agree to sell your life and never touch grass ever again
                     </p>
                     <form onSubmit={submitForm}>
@@ -69,12 +69,12 @@ export default function Register() {
                                 checked = {agreement}
                                 onChange = {e => setAgreement(e.target.checked)}
                             />
-                            <label htmlFor="agreement" className="text-xs cursor-pointer text-fuchsia-50">I agree to forever remain a weeb</label>
+                            <label htmlFor="agreement" className="text-xs cursor-pointer text-green-500">I agree to forever remain a weeb</label>
                             <small className="block font-medium text-red-500 p">{errors.agreement}</small>
                         </div>
                         
                         <InputGroup
-                            className="mb-2"
+                            className="mb-2 text-green-700 placeholder-green-600"
                             type="email"
                             value={email}
                             setValue={setEmail}
@@ -82,7 +82,7 @@ export default function Register() {
                             error={errors.email}
                         />
                         <InputGroup
-                            className="mb-2"
+                            className="mb-2 text-green-700 placeholder-green-600"
                             type="text"
                             value={username}
                             setValue={setUserName}
@@ -90,7 +90,7 @@ export default function Register() {
                             error={errors.username}
                         />
                         <InputGroup
-                            className="mb-4"
+                            className="mb-4 text-green-700 placeholder-green-600"
                             type="password"
                             value={password}
                             setValue={setPassword}
@@ -98,14 +98,14 @@ export default function Register() {
                             error={errors.password}
                         />
 
-                        <button className="w-full py-3 mb-4 font-bold transition border rounded duraiton-50 text-s text-fuchsia-200 bg-fuchsia-700 border-fuchsia-700 hover:bg-fuchsia-900">
+                        <button className="w-full py-3 mb-4 font-bold transition border rounded duraiton-50 text-s text-green-200 bg-green-700 border-green-700 hover:bg-green-900">
                             Sign Up
                         </button>
                     </form>
-                    <small className="text-fuchsia-100">
+                    <small className="text-green-100">
                         Already a weeb?
                         <Link legacyBehavior href="/login">
-                            <a className="ml-1 uppercase text-fuchsia-500">Log In</a>
+                            <a className="ml-1 uppercase text-green-500">Log In</a>
                         </Link>
                     </small>
                 </div>

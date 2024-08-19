@@ -38,20 +38,20 @@ export default function CreateSub() {
             ></div>
             <div className="flex flex-col justify-center pl-6">
                 <div className="w-98">
-                    <h1 className="mb-2 text-lg font-medium text-fuchsia-200">
+                    <h1 className="mb-2 text-lg font-medium text-green-700">
                         Create a Community
                     </h1>
-                    <hr className="h-px border-0 dark:bg-fuchsia-700" />
+                    <hr className="h-px border-0 dark:bg-green-700" />
                     <form onSubmit={createSub}>
                         <div className="my-6">
-                            <p className="font-medium text-fuchsia-300">
+                            <p className="font-medium text-green-600">
                                 Name
                             </p>
-                            <p className="text-xs text-fuchsia-600">Community name cannot be changed later, also make it funny</p>
+                            <p className="text-xs text-green-500">Community name cannot be changed later, also make it funny</p>
                             <input
                                 type="text"
                                 className={classNames(
-                                    "w-full p-3 border rounded border-fuchsia-800 bg-fuchsia-900 focus:outline-none hover:border-fuchsia-600 focus:border-fuchsia-600 text-fuchsia-300",
+                                    "w-full p-3 border rounded border-green-200 bg-green-200 focus:outline-none hover:border-green-300 focus:border-green-300 text-green-600",
                                     { 'border-red-600': errors.name })}
                                 value={name}
                                 onChange={e => setName(e.target.value)}
@@ -59,13 +59,13 @@ export default function CreateSub() {
                             <small className="font-medium text-red-600">{errors.name}</small>
                         </div>
                         <div className="my-6">
-                            <p className="font-medium text-fuchsia-300">
+                            <p className="font-medium text-green-600">
                                 Title
                             </p>
-                            <p className="text-xs text-fuchsia-600">Idk man, title and all you can change any time </p>
+                            <p className="text-xs text-green-500">Idk man, title and all you can change any time </p>
                             <input
                                 type="text"
-                                className={classNames("w-full p-3 border rounded border-fuchsia-800 bg-fuchsia-900 focus:outline-none hover:border-fuchsia-600 focus:border-fuchsia-600 text-fuchsia-300",
+                                className={classNames("w-full p-3 border rounded border-green-200 bg-green-200 focus:outline-none hover:border-green-300 focus:border-green-300 text-green-600",
                                     { 'border-red-600': errors.title })}
                                 value={title}
                                 onChange={e => setTitle(e.target.value)}
@@ -73,12 +73,12 @@ export default function CreateSub() {
                             <small className="font-medium text-red-600">{errors.title}</small>
                         </div>
                         <div className="my-6">
-                            <p className="font-medium text-fuchsia-300">
+                            <p className="font-medium text-green-600">
                                 Description
                             </p>
-                            <p className="text-xs text-fuchsia-600">Describe your community ig? idk</p>
+                            <p className="text-xs text-green-500">Describe your community ig? idk</p>
                             <textarea
-                                className="w-full p-3 border rounded border-fuchsia-800 bg-fuchsia-900 focus:outline-none hover:border-fuchsia-600 focus:border-fuchsia-600 text-fuchsia-300"
+                                className="w-full p-3 border rounded border-green-200 bg-green-200 focus:outline-none hover:border-green-300 focus:border-green-300 text-green-600"
                                 value={description}
                                 onChange={e => setDescription(e.target.value)}
                             />
