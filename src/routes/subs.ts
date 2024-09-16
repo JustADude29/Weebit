@@ -52,8 +52,13 @@ const getSub = async (req: Request, res: Response) => {
         const posts = await Post.find({
             where: { subName: name },
             order: { joinedAt: 'DESC' },
-            relations: ['comments']
+            relations: ['comments', 'votes']
         })
+
+        if(res.locals.user) {
+            posts.forEach((p) => p.setUserVote(res.locals.user))
+        }
+
         sub.posts = posts
 
         return res.json(sub)

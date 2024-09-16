@@ -14,7 +14,7 @@ export default function SubPage() {
 
     const subName = router.query.sub
 
-    const { data: sub, error } = useSWR<Sub>(subName ? `/sub/${subName}` : null)
+    const { data: sub, error, revalidate, } = useSWR<Sub>(subName ? `/sub/${subName}` : null)
 
     if (error)
         router.push('/')
@@ -27,7 +27,7 @@ export default function SubPage() {
     } else {
         postsMarkUp = sub && (
             <div className="w-full sm:px-4 md:p-0 md:w-160">
-                {sub.posts.map((post: Post) => <PostCard post={post} key={post.identifier}></PostCard>)}
+                {sub.posts.map((post: Post) => <PostCard post={post} key={post.identifier} revalidate={revalidate}></PostCard>)}
             </div>
         )
     }

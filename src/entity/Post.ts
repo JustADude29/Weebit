@@ -50,7 +50,7 @@ export default class Post extends Entity {
     comments: Comment[]
 
     @Exclude()
-    @OneToMany(() => Vote, (vote) => vote.comment)
+    @OneToMany(() => Vote, (vote) => vote.post)
     votes: Vote[]
 
     @Expose() get url(): string {
@@ -71,9 +71,13 @@ export default class Post extends Entity {
       this.userVote = index > -1 ? this.votes[index].value : 0
     }
 
+    @Expose() get userVoteValue(): number {
+      return this.userVote;
+    }
+
     @BeforeInsert()
     makeIdAndSlug(){
-        this.identifier = makeId(7)
-        this.slug = slugger(this.title)
+      this.identifier = makeId(7)
+      this.slug = slugger(this.title)
     }
 }

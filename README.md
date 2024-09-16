@@ -1,56 +1,121 @@
-# Weebit
-#### An anime-themed reddit clone made using Typeorm, express, Nextjs, TailwindCSS and SWR
+# Weebit - Online Forum App
 
-### TechStack:
-  **Server**: TypeORM, express
+Weebit is an online forum platform built using modern web technologies. It allows users to create and engage in discussions across various topics, offering features such as upvoting/downvoting, commenting, and more. The project utilizes a robust tech stack including TypeORM, Express, Next.js, TailwindCSS, and SWR for optimal performance and an intuitive user experience.
 
-  **Client**: NextJS, Tailwind CSS and SWR
-  
-  **Database**: PostgreSQL
+---
 
-### To Run the server and client locally:
-1. Run ```npm i``` command to install dependancies
-2. Setup database settings inside 'data-source.ts' (use a .env file to configure, dotEnvTemplate given as reference)
-3. Run ```npm run typeorm -- migration:generate src/migration/<migration_name>```
-4. Run ```npm run typeorm -- migration:run```
-5. Run ```npm run dev``` command to run both server and also client (***cli can be found in [package.json](package.json)***)
-6. open http://localhost:3000
+## 🚀 Tech Stack:
 
-### Features:
-* Authentication using JWT token
-* Password hashed using Bcrypt
-* Checks of for valid email, username and password(using class-validator)
-* Optimised data fetching using SWR
-* Infinite loading in home page using SWR
-* Commenting functionality
+- **Server:** TypeORM, Express.js
+- **Client:** Next.js, Tailwind CSS, SWR
+- **Database:** PostgreSQL
+
+---
+
+## 🛠️ Running the Server and Client Locally:
+
+1. **Install dependencies**:  
+   Run the following command:
+   ```bash
+   npm install
+   ```
+2. **Database Setup**:
+   Configure your database settings in `data-source.ts` by using a `.env` file. A template for `.env` is provided for reference.
+
+3. **Generate Migrations**:
+   - Generate a new Migration:
+   ```bash
+   npm run typeorm -- migration:generate src/migration/<migration_name>
+   ```
+   - Run the migration:
+   ```bash
+   npm run typeorm -- migration:run
+   ```
+4. **Start the Server and Client**:
+   Run the following command to start both the server and client:
+
+   ```bash
+   npm run dev
+   ```
+
+5. **Access the webpage**:
+   Open your browser and paste the following link:
+   ```bash
+   http://localhost:3000
+   ```
+
+---
+
+## ✨ Features:
+
+- **Authentication**:
+  Secure authentication using JWT tokens.
+
+- **Password Security**:
+  Passwords are hashed with Bcrypt for enhanced security.
+
+- **Validation**:
+  Checks for valid email, username, and password using class-validator.
+
+- **Optimized Data Fetching**:
+  Data fetching is optimized with SWR for real-time, revalidation-friendly fetching.
+
+- **Infinite Scrolling**:
+  The homepage supports infinite loading for posts using SWR.
+
+- **Community-Driven Features**:
+  - Commenting on posts.
+  - Upvoting/Downvoting posts.
+
+---
+
+## 📸 Screenshots:
 
 ### Register Page:
+
 ![register page](screenshots/register.png)
 
 ### Login Page:
+
 ![Login page](screenshots/login.png)
 
 ### Home Page:
+
 ![Home page](screenshots/homepage.png)
 
+### Search Bar:
+
+![Search Bar](screenshots/search_bar.png)
+
 ### Create subWeebit Page:
+
 ![Create subWeebit Page](screenshots/create_subweebit.png)
 
 ### Create Post page:
+
 ![Create Post page](screenshots/create_post_page.png)
 
 ### Post Page:
+
 ![Post Page](screenshots/post_page_comments.png)
 
 ### SubWeebit Page:
+
 ![SubWeebit Page](screenshots/subweebit_page.png)
 
 ### User Page:
+
 ![User Page](screenshots/userpage.png)
 
-## Acknowledgements:
-* [Classed](https://www.youtube.com/@Classsed) for YouTube tutorial on how to make the website
-* [Adobe Stock Image](/client/public/images/background.jpg)
+---
 
+## 📝 Acknowledgements::
 
-***The [icon](/client/public/icons/icon_big.png) used is made by me***
+- **Background Image**:
+  [Adobe Stock Image](/client/public/images/background.jpg)
+- **Custom Icon**:
+  The [icon](/client/public/icons/icon_big.png) used is made by me
+
+---
+
+Enjoy using Weebit, a fast and modern forum app designed for dynamic and engaging online discussions!

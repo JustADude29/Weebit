@@ -28,42 +28,48 @@ const createPost = async (req: Request, res: Response) => {
     }
 }
 
-const getPosts =async (req: Request, res: Response) => {
+const getPosts = async (req: Request, res: Response) => {
     const currentPage: number = (req.query.page || 0) as number
     const postsPerPage: number = (req.query.count || 10) as number
     try {
         const posts = await Post.find({
-            order: {joinedAt: 'DESC'},
+            order: { joinedAt: 'DESC' },
             relations: ['comments', 'votes', 'sub'],
             skip: currentPage * postsPerPage,
             take: postsPerPage
         })
 
+        if (res.locals.user) {
+          posts.forEach((p) => p.setUserVote(res.locals.user))
+        }
+
         return res.json(posts)
     } catch (error) {
         console.log(error)
-        return res.status(500).json({ error:"sth wrong" })
+        return res.status(500).json({ error: "sth wrong" })
     }
 }
+
 
 const getPost = async (req: Request, res: Response) => {
     const { identifier, slug } = req.params
     try {
-        const post = await Post.findOneOrFail({ 
-          where:{ identifier: identifier, slug: slug }, 
-          relations:['comments', 'votes', 'sub'] 
+        const post = await Post.findOneOrFail({
+            where: { identifier: identifier, slug: slug },
+            relations: ['comments', 'votes', 'sub']
         })
 
-        if(res.locals.user) {
+        if (res.locals.user) {
           post.setUserVote(res.locals.user)
         }
 
-        return res.json(post)
+       return res.json(post)
     } catch (error) {
         console.log(error)
-        return res.status(404).json({ error:"post not found" })
+        return res.status(404).json({ error: "post not found" })
     }
 }
+
 
 const commentOnPost = async (req: Request, res: Response) => {
     const { identifier, slug } =  req.params
@@ -89,10 +95,13 @@ const commentOnPost = async (req: Request, res: Response) => {
 const getPostComments =async (req:Request, res: Response) => {
     const { identifier, slug } = req.params
     try {
-        const post = await Post.findOneOrFail({ where: {identifier: identifier, slug: slug} })
+        const post = await Post.findOneOrFail({ 
+          where: {identifier: identifier, slug: slug}, 
+        })
 
-        const comments = post.comments
-        comments.reverse()
+        const comments = post.comments 
+
+        console.log(comments);
 
         if(res.locals.user) {
           comments.forEach((c) => c.setUserVote(res.locals.user))
@@ -107,8 +116,8 @@ const getPostComments =async (req:Request, res: Response) => {
 
 const router = Router()
 router.post('/', auth, createPost)
-router.get('/', getPosts)
-router.get('/:identifier/:slug', getPost)
+router.get('/', auth, getPosts)
+router.get('/:identifier/:slug', auth, getPost)
 router.post('/:identifier/:slug/comment', auth, commentOnPost)
-router.get('/:identifier/:slug/comments', getPostComments)
+router.get('/:identifier/:slug/comments', auth, getPostComments)
 export default router
